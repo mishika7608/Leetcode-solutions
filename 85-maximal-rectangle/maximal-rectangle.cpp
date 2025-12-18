@@ -1,15 +1,15 @@
 class Solution {
 public:
-    int largestArea(vector<int> &heights){
-        stack<int> st;
+    int CalcHistoArea(vector<int> &heights){
         heights.push_back(0);
-        int maxArea = 0;
-
-        for (int i=0;i<heights.size();i++){
-            while(!st.empty() && heights[st.top()] > heights[i]){
+        int n=heights.size();
+        int maxArea=0;
+        stack<int> st;
+        for (int i=0;i<n;i++){
+            while(!st.empty() && heights[st.top()]>heights[i]){
                 int h = heights[st.top()];
                 st.pop();
-                int w = st.empty()?i:i-st.top()-1;
+                int w = st.empty()?i : i-st.top()-1;
                 maxArea = max(maxArea, h*w);
             }
             st.push(i);
@@ -18,15 +18,16 @@ public:
         return maxArea;
     }
     int maximalRectangle(vector<vector<char>>& matrix) {
-        if  (matrix.empty()) return 0;
-        int n = matrix[0].size();
-        vector<int> heights(n,0);
+        int n= matrix[0].size();
+        vector<int> heights(n, 0);
         int ans = 0;
 
-        for (auto& row: matrix){
+        for (auto &row : matrix){
             for (int j=0;j<n;j++){
-                heights[j] = (row[j] == '1')? heights[j]+1:0;
-            }ans = max(ans, largestArea(heights));
+                if (row[j]=='1'){heights[j]+=1;}
+                else{heights[j]=0;}
+            }
+            ans=max(ans,CalcHistoArea(heights));
         }
         return ans;
     }
