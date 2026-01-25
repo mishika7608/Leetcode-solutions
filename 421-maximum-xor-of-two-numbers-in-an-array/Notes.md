@@ -1,0 +1,1 @@
+<h2>maximum-xor-of-two-numbers-in-an-array Notes</h2><hr>[ Time taken: 8 d 3 hrs 22 m 20 s ]
