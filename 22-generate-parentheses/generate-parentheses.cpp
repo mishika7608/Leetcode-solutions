@@ -6,7 +6,8 @@ public:
             ans.push_back(s);
             return ;
         }
-        if (oc<n){
+        if (oc<n)
+        {
             genFunc(ans, oc+1, cc, n, s+'(');
         }
         if (cc<oc){
