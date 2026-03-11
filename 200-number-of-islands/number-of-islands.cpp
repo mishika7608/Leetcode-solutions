@@ -1,34 +1,35 @@
+//BFS
+#include <queue>
+
 class Solution {
 public:
-    void dfs(vector<vector<char>>& grid, int r, int c) {
-        int rows = grid.size();
-        int cols = grid[0].size();
-        
-        if (r < 0 || c < 0 || r >= rows || c >= cols || grid[r][c] == '0')
-            return;
-
-        grid[r][c] = '0';
-
-        dfs(grid, r + 1, c);
-        dfs(grid, r - 1, c);
-        dfs(grid, r, c + 1);
-        dfs(grid, r, c - 1);
-    }
-
     int numIslands(vector<vector<char>>& grid) {
         int rows = grid.size();
         int cols = grid[0].size();
-        int count = 0;
-
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (grid[i][j] == '1') {
-                    count++;
-                    dfs(grid, i, j);
+        int islands = 0;
+        vector<pair<int,int>> dir = {{1,0},{-1,0},{0,1},{0,-1}};
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                if(grid[i][j]=='1'){
+                    islands++;
+                    queue<pair<int,int>> q;
+                    q.push({i,j});
+                    grid[i][j]='0';
+                    while(!q.empty()){
+                        auto [r,c]=q.front();
+                        q.pop();
+                        for(auto d:dir){
+                            int nr=r+d.first;
+                            int nc=c+d.second;
+                            if(nr>=0 && nc>=0 && nr<rows && nc<cols && grid[nr][nc]=='1'){
+                                grid[nr][nc]='0';
+                                q.push({nr,nc});
+                            }
+                        }
+                    }
                 }
             }
         }
-
-        return count;
+        return islands;
     }
 };
