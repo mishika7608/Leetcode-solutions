@@ -18,14 +18,12 @@ public:
     }
     ListNode* removeNthFromEnd(ListNode* head, int n) {
         int k=lenCalc(head);
-        // if (n==1 && k==1){return NULL;delete head;}
         struct ListNode* p=head;
         if (n==k){
             head=head->next;
             delete p;
             return head;
         }
-        // struct ListNode* p=head;
         struct ListNode* q=NULL;
         for (int i=0;i<k-n && p!=NULL;i++){
             q=p;
