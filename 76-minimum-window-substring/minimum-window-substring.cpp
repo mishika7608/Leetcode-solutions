@@ -3,15 +3,14 @@ public:
     string minWindow(string s, string t) {
         vector<int> freq(128,0);
 
-        for(char c : t) freq[c]++;
-
+        for(char c : t) {freq[c]++;}
         int left = 0, right = 0;
         int count = t.size();
         int minLen = INT_MAX;
         int start = 0;
 
         while(right < s.size()){
-            if(freq[s[right]] > 0) count--;
+            if(freq[s[right]] > 0){ count--;}
             freq[s[right]]--;
             right++;
 
