@@ -1,1 +1,1 @@
-<h2>factorial-trailing-zeroes Notes</h2><hr>[ Time taken: 8d 17hrs 8m 57s ]
+<h2>factorial-trailing-zeroes Notes</h2><hr>[ Time taken: 3hrs 23m 47s ]
