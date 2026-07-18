@@ -1,17 +1,17 @@
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
-        int duplicate=0;
         int n = nums.size()-1;
-        for (int i=0;i<32;i++){
-            int cnt=0,cntRange=0;
-            int mask=1<<i;
-            for (int x : nums){if (x & mask)cnt+=1;}
-            for (int k=1;k<=n;k++){
-               if (mask & k) cntRange+=1;
-            }
-            if (cntRange<cnt){duplicate|=mask;}
+        int duplicate=0;
+        for (int bit=0;bit<32;bit++){
+            int mask = 1<<bit;
+            int cntNums=0;int cntRange=0;
+            for (int n : nums){if (n&mask){cntNums++;}}
+            for (int i=1;i<=n;i++){
+                if (i&mask){cntRange++;}            }
+            if (cntNums > cntRange){duplicate+=mask;}
         }
         return duplicate;
+        
     }
 };
