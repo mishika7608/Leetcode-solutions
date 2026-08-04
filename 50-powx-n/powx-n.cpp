@@ -6,10 +6,15 @@ public:
             if (n==INT_MIN){
                 return 1/myPow(x,-(n+1))*x;
             }
-            return 1/myPow(x,-n);
+            return 1/myPow(x,-(n));
         }
-        double half = myPow(x,n/2);
-        if (n%2==0){return half*half;}
-        else{return half*half*x;}
+        double half=myPow(x,n/2);
+        if (n%2==1){
+            return half*half*x;
+        }
+        else{
+            return half*half;
+        }
+        
     }
 };
