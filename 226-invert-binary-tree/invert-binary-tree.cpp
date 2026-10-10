@@ -11,10 +11,10 @@
  */
 class Solution {
 public:
-    void swap(TreeNode *a){
-        TreeNode* temp = a->left;
-        a->left = a->right;
-        a->right = temp;
+    void swap(TreeNode* root){
+        TreeNode* temp=root->left;
+        root->left=root->right;
+        root->right=temp;
     }
     TreeNode* invertTree(TreeNode* root) {
         if (root==NULL){return root;}
